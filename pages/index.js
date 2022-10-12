@@ -9,11 +9,12 @@ import {Modal,Button} from 'react-bootstrap';
 import {createUserWithEmailAndPassword,GithubAuthProvider,GoogleAuthProvider,signInWithEmailAndPassword,signInWithPopup,TwitterAuthProvider} from "@firebase/auth";
 import { authService } from '../src/firebase';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
 
   const [result,setResult]=useState("")
-
+  const [isComplete,setIsComplete]=useState(false)
   const onSocialClick = async (event) => {
     const {
     target: { name },
@@ -26,6 +27,7 @@ export default function Home() {
     const result = await signInWithPopup(authService, provider);
     const credential = TwitterAuthProvider.credentialFromResult(result);
     setResult(result)
+    setIsComplete(true)
     // const token = credential.accessToken;
     } else if (name === "github") {
     provider = new GithubAuthProvider();
@@ -50,26 +52,53 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome!
-        </h1>
+        
+        {
+          isComplete===true
+          ?(
+            <>
+            
+            <Modal.Dialog className={styles.modal_dialog}>
+              <Modal.Header>
+                <Modal.Title className={styles.modal_text}> <h2>Nice to meet you! @{result.user.reloadUserInfo.screenName}</h2> </Modal.Title>
+              </Modal.Header>
+        
+              <Modal.Body>
+                <h3 className={styles.modal_text}>Step1:<br/>Follow our Twitter</h3>
+                <div className={styles.container_pantera}><h4 className={styles.modal_text}>@Pantera ICO</h4></div>
+                <h3 className={styles.modal_text}>Step2:<br/>Join our Discord</h3>
+                <div className={styles.container_pantera}><h4 className={styles.modal_text}>@Pantera ICO</h4></div>
+              </Modal.Body>
+        
+              <Modal.Footer>
+                <Button variant="primary"><Link href="/list" className={styles.modal_text}><h4>Let's start</h4></Link></Button>
+              </Modal.Footer>
+            </Modal.Dialog>
+          </>
+          )
+          :(
+          <>
+          <h1 className={styles.title}>
+            Welcome!
+          </h1>
+  
+          <p className={styles.description}>
+            Please login through SNS
+          </p>
+  
+          <div className={styles.grid}>
+            <button onClick={onSocialClick} name="twitter"className={styles.card}>
+              <h2 style={{"color":"black"}}>Twitter</h2>
+              <div className={styles.twitter_icon}><Image src='/images/twitter.png' height={30} width={40}></Image></div>
+            </button>
+          </div>
+          </>
+          )
+        }
 
-        <p className={styles.description}>
-          Please login through SNS
-        </p>
 
-        <div className={styles.grid}>
-          <button onClick={onSocialClick} name="twitter"className={styles.card}>
-            <h2 style={{"color":"black"}}>Twitter</h2>
-            <div className={styles.twitter_icon}><Image src='/images/twitter.png' height={30} width={40}></Image></div>
-          </button>
-        </div>
-        <button onClick={onSocialClick} name="twitter">twitter</button>
-        {/* <div className={styles.img_container}><img className={styles.img_main} src="https://www.superful.xyz/_next/image?url=https%3A%2F%2Fsuperful-assets-prod.s3.amazonaws.com%2Fimages%2F8dd0a15a-1507-43f9-ae60-1928edfb53cd.gif&w=1080&q=75" alt="" /></div> */}
-        {/* <Image src='/images/8dd0a15a-1507-43f9-ae60-1928edfb53cd.gif' height={300} width={200}></Image> */}
       </main>
-    </div>
-    
+    </div>            
     </>
   )
 }
