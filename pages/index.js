@@ -6,7 +6,41 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Modal,Button} from 'react-bootstrap';
+import {createUserWithEmailAndPassword,GithubAuthProvider,GoogleAuthProvider,signInWithEmailAndPassword,signInWithPopup,TwitterAuthProvider} from "@firebase/auth";
+import { authService } from '../src/firebase';
+import { useState } from 'react';
+
 export default function Home() {
+
+  const [result,setResult]=useState("")
+
+  const onSocialClick = async (event) => {
+    const {
+    target: { name },
+    } = event;
+    let provider;
+    try {
+    if (name === "twitter") {
+    // provider = new GoogleAuthProvider();
+    provider = new TwitterAuthProvider()
+    const result = await signInWithPopup(authService, provider);
+    const credential = TwitterAuthProvider.credentialFromResult(result);
+    setResult(result)
+    // const token = credential.accessToken;
+    } else if (name === "github") {
+    provider = new GithubAuthProvider();
+    const result = await signInWithPopup(authService, provider);
+    const credential = GithubAuthProvider.credentialFromResult(result);
+    // const token = credential.accessToken;
+    } 
+    
+    } catch (error) {
+    console.log(error);
+    }
+    };
+
+  console.log(result)
+
   return (
     <>
     <div className={styles.container}>
@@ -25,11 +59,12 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Twitter</h2>
+          <button onClick={onSocialClick} name="twitter"className={styles.card}>
+            <h2 style={{"color":"black"}}>Twitter</h2>
             <div className={styles.twitter_icon}><Image src='/images/twitter.png' height={30} width={40}></Image></div>
-          </a>
+          </button>
         </div>
+        <button onClick={onSocialClick} name="twitter">twitter</button>
         {/* <div className={styles.img_container}><img className={styles.img_main} src="https://www.superful.xyz/_next/image?url=https%3A%2F%2Fsuperful-assets-prod.s3.amazonaws.com%2Fimages%2F8dd0a15a-1507-43f9-ae60-1928edfb53cd.gif&w=1080&q=75" alt="" /></div> */}
         {/* <Image src='/images/8dd0a15a-1507-43f9-ae60-1928edfb53cd.gif' height={300} width={200}></Image> */}
       </main>
