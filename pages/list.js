@@ -1,14 +1,14 @@
 import React from 'react';
-import {useEffect, useState} from 'react'
 import styles from '../styles/Home.module.css'
 import {Table,Spinner} from 'react-bootstrap';
 import Image from 'next/image'
 import {addDoc,collection, doc, getDocs,query,onSnapshot,orderBy} from 'firebase/firestore'
 import {dbService} from '../src/firebase'
 import Link from 'next/link'
+import { useState,useEffect } from 'react';
 
-export default function list () {
-  const [products,setProducts]=useState([])
+export default function List () {
+  const [products,setProducts]=useState()
   const [isComplete,setIsComplete]=useState(false)
 
   const getProducts=async ()=>{  
@@ -59,7 +59,7 @@ export default function list () {
                 <tbody>
                   {products.map((elem,index)=>{
                     return(
-                      <tr className={styles.table_row}>
+                      <tr className={styles.table_row} key={index}>
                         <td>{index+1}</td>
                         <td><div className={styles.img_box}><img className={styles.img_content}src={elem.img} alt="" /></div></td>
                         <td>{elem.Name}</td>
