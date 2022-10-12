@@ -8,31 +8,31 @@ import Link from 'next/link'
 import { useState,useEffect } from 'react';
 
 export default function List () {
-  // const [products,setProducts]=useState()
-  // const [isComplete,setIsComplete]=useState(false)
+  const [products,setProducts]=useState()
+  const [isComplete,setIsComplete]=useState(false)
 
-  // const getProducts=async ()=>{  
-  //   const q=query(collection(dbService,"Cards"))
-  //   const querySnapshot=await getDocs(q)
-  //     querySnapshot.forEach((doc)=>{
-  //       const newOne=doc.data()
-  //       setProducts((prev)=>{
-  //         if (prev.length<querySnapshot.size){
-  //           return [newOne,...prev]
-  //         } else {
-  //           return prev
-  //         }
-  //       })
-  //     })
-  //   setIsComplete(true)
-  // }
+  const getProducts=async ()=>{  
+    const q=query(collection(dbService,"Cards"))
+    const querySnapshot=await getDocs(q)
+      querySnapshot.forEach((doc)=>{
+        const newOne=doc.data()
+        setProducts((prev)=>{
+          if (prev.length<querySnapshot.size){
+            return [newOne,...prev]
+          } else {
+            return prev
+          }
+        })
+      })
+    setIsComplete(true)
+  }
 
-  // useEffect(() => {
-  //   getProducts()
-  // }, []);
+  useEffect(() => {
+    getProducts()
+  }, []);
   
-  // console.log(products)
-  // console.log(isComplete)
+  console.log(products)
+  console.log(isComplete)
 
   return (
     <>
@@ -57,7 +57,7 @@ export default function List () {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* {products.map((elem,index)=>{
+                  {products.map((elem,index)=>{
                     return(
                       <tr className={styles.table_row} key={index}>
                         <td>{index+1}</td>
@@ -69,7 +69,7 @@ export default function List () {
                         <td>Ready</td>
                     </tr>
                     )
-                  })} */}
+                  })}
                 </tbody>
               </Table>  
             </div>
