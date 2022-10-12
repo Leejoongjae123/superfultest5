@@ -22,9 +22,6 @@ function MyApp({ Component, pageProps }) {
       </ul>
     </div>
     <Component {...pageProps} />
-    <div className={styles.Footer}>
-      <div>1111</div>
-    </div>
     </>
   )
 }

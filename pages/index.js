@@ -71,7 +71,7 @@ export default function Home() {
               </Modal.Body>
         
               <Modal.Footer>
-                <Button variant="primary"><Link href="/list" className={styles.modal_text}><h4>Let's start</h4></Link></Button>
+                <Button variant="primary"><Link href="/list" className={styles.modal_text}><h4>Lets start</h4></Link></Button>
               </Modal.Footer>
             </Modal.Dialog>
           </>
