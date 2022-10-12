@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useState,useEffect } from 'react';
 
 export default function List () {
-  const [products,setProducts]=useState()
+  const [products,setProducts]=useState([])
   const [isComplete,setIsComplete]=useState(false)
 
   const getProducts=async ()=>{  
