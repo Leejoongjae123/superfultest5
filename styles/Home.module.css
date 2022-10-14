@@ -1,11 +1,13 @@
 .Navbar{
-  display:flex;
   position:fixed;
+  display:flex;
   background-color:#161E67;
   color:#eee;
-  height:10vh;
+  height:100px;
   width:100%;
   align-items:center;
+  justify-content: space-between;
+  z-index:0;
 }
 .Navbar_content{
   display:flex;
@@ -17,6 +19,38 @@
   display:block;
   list-style:none;
 }
+
+.Navbar_logo{
+  margin-top:1%;
+  
+}
+
+.Navbar_price{
+  display:flex;
+  width:20%;
+  height:100%;
+  text-align:cetner;
+  line-height:100px;
+  align-items:center;
+  
+}
+
+.Navbar_detail{
+  margin-left:20px;
+  text-align:center;
+}
+
+.user_id{
+  position:relative;
+  position:fixed;
+  right:3%;
+  top:5%;
+  z-index:10;
+  color:#eee;
+}
+
+
+
 .table_row tr{
   justify-content:center;
   align-items:center;
@@ -27,12 +61,7 @@
   height:100%;
 }
 
-.Footer{
-  position:fixed;
-  height:10vh;
-  width:100%;
-  background-color:#161E67;
-}
+
 
 .img_container{
   width:100px;
@@ -55,18 +84,30 @@
   height:100%;
 }
 
+.footer_logo{
+  object-fit:cover;
+  width:100%;
+  height:100%;
+}
+
 .container {
+  height:100%;
+  width:100%;
   padding: 0 2rem;
   background-color:#0f0a31;
   color:#eee;
   transition:all 0.5s
 }
 
+.link_button{
+  border:none;
+}
+
 .table_container{
   background-color:#eee;
   background-color:rgba(255,255,255,0.1);
   border-radius:10px;
-  margin-top:5%;
+  margin-top:1%;
   margin-left:5%;
   margin-right:5%;
   padding:20px;
@@ -80,7 +121,6 @@
   width:50%;
   height:50%;
   margin:auto;
-  justify-content:center;
 }
 
 .modal{
@@ -91,22 +131,86 @@
 }
 
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
+  height: 100%;
+  width:100%;
+  padding: 150px 0 0 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color:#0f0a31;
+  color:#eee;
 }
 
 .footer {
-  display: flex;
-  flex: 1;
+  height:5%;
   padding: 2rem 0;
   border-top: 1px solid #eaeaea;
-  justify-content: center;
+  
   align-items: center;
+  background-color:#161E67;
+  border:none;
+  color:#eee;
+}
+
+.footer_upper_content{
+  width:80px;
+  border-radius:50px;
+  margin:0% 1%;
+  align-items:center;
+  line-height:80px;
+  object-fit:cover;
+  display:block;
+}
+
+.footer_upper{
+  display:flex;
+  justify-content: right;
+  align-items:center;
+}
+
+.footer_lower{
+  
+  display:flex;
+  justify-content: right;
+}
+
+.footer_lower_content{
+  margin-right:5%;
+  margin-top:1%;
+}
+
+.footer_content_container{
+  width:6%;
+  
+}
+.footer_boundary1{
+  height:50px;
+  width:50px;
+  background-color:#eee;
+  border-radius:100%;
+  background-image:url('/images/pantera.jpg');
+  background-size:cover;
+  margin:auto;
+}
+.footer_boundary2{
+  height:50px;
+  width:50px;
+  background-color:#eee;
+  border-radius:100%;
+  background-image:url('/images/jayce.jpg');
+  background-size:cover;
+  margin:auto;
+}
+.footer_boundary3{
+  height:50px;
+  width:50px;
+  background-color:#eee;
+  border-radius:100%;
+  background-image:url('/images/chainmonster.jpg');
+  background-size:cover;
+  margin:auto;
 }
 
 .footer a {
@@ -154,12 +258,15 @@
 }
 
 .grid {
+  height:100%;
+  width:100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  
 }
+
 
 .card {
   margin: 1rem;
