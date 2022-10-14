@@ -58,10 +58,10 @@ function MyApp({ Component, pageProps }) {
         crossOrigin="anonymous"
       />
     </Head>   
-    
+    <div className={styles.container}>
     <div className={styles.Navbar}> 
       <div className={styles.Navbar_logo}>
-        <Image src='/images/pantera_white.png' height={200} width={150}></Image>
+        <Image src='/images/pantera_white.png' height={150} width={120}></Image>
       </div>
       <div className={styles.Navbar_price}>
           <p className={styles.Navbar_detail}>ETH Price:<br/>{isComplete===true?(products[0].price):("Nothing")}<br/>{isComplete===true?(products[0].date):("Nothing")}</p>
@@ -92,6 +92,7 @@ function MyApp({ Component, pageProps }) {
       <div className={styles.footer_lower}>
         <div className={styles.footer_lower_content}>Contact : Alex@lysithea.ventures</div>
       </div>
+    </div>
     </div>
     </Provider>
     </>

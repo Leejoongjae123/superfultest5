@@ -100,7 +100,7 @@ export default function List () {
       (
         <main className={styles.main}>
           <div className={styles.table_container}>
-            <h2 className={styles.table_header}>List</h2>
+            
             <Table>
               <thead>
                 <tr>
