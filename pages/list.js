@@ -75,7 +75,7 @@ export default function List () {
 
   useEffect(() => {
     getHistory();
-  }, [history]);
+  }, []);
 
   // const getState = async ()=>{
   //   const docRef = doc(dbService, "history", state.user.name);

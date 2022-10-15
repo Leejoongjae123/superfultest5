@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }) {
     <div className={styles.container}>
     <div className={styles.Navbar}> 
       <div className={styles.Navbar_logo}>
-        <Image src='/images/pantera_white.png' height={150} width={120}></Image>
+        <Link href="/"><a><Image src='/images/pantera_white.png' height={150} width={120}></Image></a></Link>
       </div>
       <div className={styles.Navbar_price}>
           <p className={styles.Navbar_detail}>ETH Price:<br/>{isComplete===true?(products[0].price):("Nothing")}<br/>{isComplete===true?(products[0].date):("Nothing")}</p>
