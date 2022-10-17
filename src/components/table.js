@@ -8,6 +8,7 @@ import {addDoc,getDoc,collection, doc, getDocs,query,onSnapshot,orderBy,setDoc} 
 import {dbService} from '../firebase'
 import { useDispatch,useSelector } from 'react-redux'
 import {changeState} from './store'
+import { Button } from 'semantic-ui-react'
 
 
 
@@ -99,8 +100,7 @@ function TableExampleSortable({products,history,clickstate}) {
     direction: null,
   })
   const { column, data, direction } = state
-
-  const [urlHistory,setUrlHistory]=useState(history)
+  const [urlHistory,setUrlHistory]=useState([])
 
   const clickPage=async (event)=>{
     console.log(event.target.href)
@@ -122,32 +122,32 @@ function TableExampleSortable({products,history,clickstate}) {
     }
   }
 
-  const clickState=(event)=>{
-    console.log(event.target.outerText)
-    console.log(event.target.currentSrc)
-    if (event.target.outerText.length>=1){
-      console.log(event.target.outertext)
-    } else if (event.target.currentSrc.length>=3){
-      let newProducts=products.filter((elem)=>{
-        return elem.img === event.target.currentSrc
-      })
-      
-      
+  const getHistory=async ()=>{  
+    const docRef = doc(dbService, "history",clickstate.user.name);
+    const docSnap = await getDoc(docRef);
+    let data
+    if (docSnap.data()){
+      data=docSnap.data().url
+    } else {
+      data=[]
     }
-    }
-
-  const clickRefresh=()=>{
-
+    setUrlHistory(data)
   }
+
   useEffect(() => {
-    setUrlHistory(history)
+    getHistory();
   }, []);
 
-  console.log(products)
+  const changeHistory=()=>{
+    getHistory()
+  }
 
   return (
     <>
-      <button style={{'color':'red'}} onClick={() => {dispatch({ type: 'REFRESH',info:products}) , clickRefresh()}}>refresh</button>
+      <div className={styles.btn_refresh}>
+        <Button onClick={() => {dispatch({ type: 'REFRESH',info:products}), changeHistory()}} icon='refresh' content='Refresh' />
+      </div>
+      
       <Table color='grey' className={styles.table} sortable celled fixed inverted>
         <Table.Header  className={styles.table_header}>
             <Table.Row >

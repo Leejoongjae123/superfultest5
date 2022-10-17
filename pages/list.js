@@ -60,8 +60,6 @@ export default function List () {
     setHistory(data)
   }
 
-
-
   useEffect(() => {
     getHistory();
   }, []);
