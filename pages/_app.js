@@ -12,6 +12,8 @@ import {credential,createUserWithEmailAndPassword,GithubAuthProvider,GoogleAuthP
 import {Provider} from 'react-redux'
 import store from '../src/components/store.js'
 import {useDispatch,useSelector} from 'react-redux'
+import 'antd/dist/antd.css'
+import { Button, Icon } from 'semantic-ui-react'
 
 function MyApp({ Component, pageProps }) {
   
@@ -95,6 +97,7 @@ function MyApp({ Component, pageProps }) {
     </div>
     </div>
     </Provider>
+
     </>
   )
 }

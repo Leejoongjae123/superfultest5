@@ -11,10 +11,22 @@ let user = createSlice({
   }
 })
 
-export let {changeName} = user.actions
+let historyFlag = createSlice({
+  name:"historyFlag",
+  initialState:false,
+  reducers:{
+    changeState(state){
+      state=!state
+    },
+    
+  }
+})
+
+export let {changeName,changeState} = user.actions
 
 export default configureStore({
   reducer: {
     user:user.reducer,
+    historyFlag:historyFlag.reducer
   }
 }) 

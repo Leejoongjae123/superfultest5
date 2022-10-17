@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
+    "antd": "^4.23.5",
     "bootstrap": "^5.2.2",
     "firebase": "^9.9.4",
     "next": "12.3.1",

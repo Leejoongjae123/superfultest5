@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import {Modal,Button} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import {credential, createUserWithEmailAndPassword,GithubAuthProvider,GoogleAuthProvider,signInWithEmailAndPassword,signInWithPopup,TwitterAuthProvider} from "@firebase/auth";
 import { authService } from '../src/firebase';
 import { useState,useEffect } from 'react';
@@ -13,6 +13,7 @@ import Link from 'next/link';
 import {useDispatch,useSelector} from 'react-redux'
 import { changeName } from '../src/components/store';
 import { useRouter } from 'next/router';
+import { Button, Icon } from 'semantic-ui-react'
 
 
 
@@ -119,7 +120,7 @@ export default function Home() {
             :(
             <>
             <h1 className={styles.title}>
-              Welcome!
+              <b>Welcome!</b>
             </h1>
     
             <p className={styles.description}>
@@ -127,15 +128,16 @@ export default function Home() {
             </p>
     
             <div className={styles.grid}>
-              <button onClick={onSocialClick} name="twitter"className={styles.card}>
-                <h2 style={{"color":"black"}}>Twitter</h2>
-                <div className={styles.twitter_icon}><Image src='/images/twitter.png' height={30} width={40}></Image></div>
-              </button>
+              <Button onClick={onSocialClick} name="twitter" color='twitter'>
+                <Icon name='twitter' /> Twitter
+              </Button>
             </div>
             </>
             )
           }
+
         </main> 
+        
     </>
   )
 }
