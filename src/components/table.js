@@ -145,7 +145,7 @@ function TableExampleSortable({products,history,clickstate}) {
   return (
     <>
       <div className={styles.btn_refresh}>
-        <Button onClick={() => {dispatch({ type: 'REFRESH',info:products}), changeHistory()}} icon='refresh' content='Refresh' />
+        <Button color='blue' onClick={() => {dispatch({ type: 'REFRESH',info:products}), changeHistory()}} icon='refresh' content='Refresh' />
       </div>
       
       <Table color='grey' className={styles.table} sortable celled fixed inverted>
