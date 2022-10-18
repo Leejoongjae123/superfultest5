@@ -58,7 +58,9 @@ function MyApp({ Component, pageProps }) {
     });
   }
   
-  
+  const userName=()=>{
+    let findUser=getAuth().currentUser
+  }
 
   return (
     <>
@@ -74,7 +76,7 @@ function MyApp({ Component, pageProps }) {
     <div className={styles.container}>
     <div className={styles.Navbar}> 
       <div className={styles.Navbar_logo}>
-        <a href='/'><Image onClick={()=>{clickHome()}} src='/images/pantera_white.png' height={150} width={120}></Image></a>
+        <Link href='/'><a><Image onClick={()=>{clickHome()}} src='/images/pantera_white.png' height={150} width={120}></Image></a></Link>
       </div>
       <div className={styles.Navbar_price}>
           <p className={styles.Navbar_detail}>ETH Price:<br/>{isComplete===true?(products[0].price):("Nothing")}<br/>{isComplete===true?(products[0].date):("Nothing")}</p>
