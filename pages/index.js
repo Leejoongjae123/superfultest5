@@ -88,6 +88,7 @@ export default function Home() {
       const uid = user.uid;
       console.log(uid)
       setIsComplete(true)
+      console.log("signed in")
     } else {
       console.log("signed out")
       setIsComplete(false)
@@ -100,6 +101,7 @@ export default function Home() {
     signOut(auth)
   }
   useEffect(() => {
+    logOut()
     checkUser()
   }, []);
 
