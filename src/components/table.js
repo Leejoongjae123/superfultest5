@@ -202,7 +202,7 @@ function TableExampleSortable({products,history,clickstate}) {
               <Table.Cell textAlign='center' verticalAlign='middle'><Link href={elem.url}><a onClick={()=>{clickPage(event)}} target="_blank">{elem.url}</a></Link></Table.Cell>
               <Table.Cell textAlign='center' verticalAlign='middle'>{elem.date_start}</Table.Cell>
               <Table.Cell textAlign='center' verticalAlign='middle'>{elem.date_end}</Table.Cell>
-              <Table.Cell textAlign='center' verticalAlign='middle' >{urlHistory.includes(elem.url)?(<div onClick={() => dispatch({ type: 'FILTER_F',info:urlHistory})} style={{'color':'red','cursor':'pointer'}}>finished</div>):(<div onClick={() => dispatch({ type: 'FILTER_R',info:urlHistory})} style={{'color':'green','cursor':'pointer'}}>ready</div>)}</Table.Cell>
+              <Table.Cell textAlign='center' verticalAlign='middle' >{urlHistory.includes(elem.url)?(<div onClick={() => dispatch({ type: 'FILTER_F',info:urlHistory})} style={{'color':'red','cursor':'pointer'}}>finished</div>):(<div onClick={() => dispatch({ type: 'FILTER_R',info:urlHistory})} style={{'color':'blue','cursor':'pointer'}}>ready</div>)}</Table.Cell>
 
             </Table.Row>
           ))}
