@@ -14,6 +14,7 @@ import store from '../src/components/store.js'
 import {useDispatch,useSelector} from 'react-redux'
 import 'antd/dist/antd.css'
 import { Button, Icon } from 'semantic-ui-react'
+import {getAuth,signOut} from'firebase/auth'
 
 function MyApp({ Component, pageProps }) {
   
@@ -46,7 +47,17 @@ function MyApp({ Component, pageProps }) {
     getProducts()
   }, []);
   
-  console.log("코인가격:",products)
+  
+
+  const clickHome=()=>{
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      console.log('log out success')
+    }).catch((error) => {
+      console.log('log out fail')
+    });
+  }
+  
   
 
   return (
@@ -63,7 +74,7 @@ function MyApp({ Component, pageProps }) {
     <div className={styles.container}>
     <div className={styles.Navbar}> 
       <div className={styles.Navbar_logo}>
-        <Link href="/"><a><Image src='/images/pantera_white.png' height={150} width={120}></Image></a></Link>
+        <a href='/'><Image onClick={()=>{clickHome()}} src='/images/pantera_white.png' height={150} width={120}></Image></a>
       </div>
       <div className={styles.Navbar_price}>
           <p className={styles.Navbar_detail}>ETH Price:<br/>{isComplete===true?(products[0].price):("Nothing")}<br/>{isComplete===true?(products[0].date):("Nothing")}</p>

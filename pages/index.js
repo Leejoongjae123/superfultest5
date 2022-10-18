@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Modal} from 'react-bootstrap';
-import {credential, createUserWithEmailAndPassword,GithubAuthProvider,GoogleAuthProvider,signInWithEmailAndPassword,signInWithPopup,TwitterAuthProvider} from "@firebase/auth";
+import {getAuth,credential, createUserWithEmailAndPassword,GithubAuthProvider,GoogleAuthProvider,signInWithEmailAndPassword,signInWithPopup,TwitterAuthProvider} from "@firebase/auth";
 import { authService } from '../src/firebase';
 import { useState,useEffect } from 'react';
 import Link from 'next/link';
@@ -30,10 +30,10 @@ export default function Home() {
 
   let dispatch=useDispatch()
   let state=useSelector((state)=>{return state})
-  console.log(state)
+  
 
   const router = useRouter()
-
+  let clickstate=useSelector((state)=>{return state})
 
   const onSocialClick = async (event) => {
     const {
@@ -81,9 +81,10 @@ export default function Home() {
     router.push('/list')
   }
 
-  console.log(result)
-  console.log(clickTwitter,clickDiscord)
   
+  console.log(clickTwitter,clickDiscord)
+
+
 
   return (
     <>

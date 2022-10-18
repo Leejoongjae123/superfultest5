@@ -4,6 +4,7 @@ import {Spinner} from 'react-bootstrap';
 import Image from 'next/image'
 import {addDoc,getDoc,collection, doc, getDocs,query,onSnapshot,orderBy,setDoc} from 'firebase/firestore'
 import {dbService} from '../src/firebase'
+import { getAuth } from 'firebase/auth';
 import Link from 'next/link'
 import { useState,useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
@@ -26,7 +27,7 @@ export default function List () {
   let clickstate=useSelector((state)=>{return state})
   
   
-  console.log("사용자이름은:",clickstate.user.name)
+  
   
   const getProducts=async ()=>{  
     const q=query(collection(dbService,"Cards"))
@@ -63,6 +64,8 @@ export default function List () {
   useEffect(() => {
     getHistory();
   }, []);
+
+  console.log(getAuth())
   
   return (
     <>
